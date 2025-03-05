@@ -1,13 +1,10 @@
-const yourname = "Edoardo Ferrini";
-const url = "https://github.com/EdoardoFerrini";
-
 function App() {
+  const totalProducts = 0;
+
   return (
     <>
-      <div>Hello {yourname}</div>
-      <a href={url} target="_blank">
-        Visit GitHub
-      </a>
+      {totalProducts > 0 && <h1>There are {totalProducts} products</h1>}
+      {totalProducts === 0 && <div>No items in cart</div>}
     </>
   );
 }
