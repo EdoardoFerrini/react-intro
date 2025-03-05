@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { User } from "./model/user";
 
 function App() {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
