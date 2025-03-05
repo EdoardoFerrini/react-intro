@@ -1,11 +1,13 @@
-const a = 1;
-const b = 2;
+const yourname = "Edoardo Ferrini";
+const url = "https://github.com/EdoardoFerrini";
 
 function App() {
   return (
     <>
-      <h1>Hello</h1>
-      {a + b}
+      <div>Hello {yourname}</div>
+      <a href={url} target="_blank">
+        Visit GitHub
+      </a>
     </>
   );
 }
