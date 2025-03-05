@@ -1,5 +1,5 @@
 function App() {
-  const totalProducts = 10;
+  const totalProducts = 10; // 0 or 10
 
   const renderTotal = () => (
     <div>
@@ -7,15 +7,16 @@ function App() {
     </div>
   );
 
-  function renderEmpty() {
-    return (
-      <div>
-        <em>No items</em>
-      </div>
-    );
-  }
-
-  return <>{totalProducts > 0 ? renderTotal() : renderEmpty()}</>;
+  return <>{totalProducts ? renderTotal() : <Empty />}</>;
 }
 
 export default App;
+
+// Empty Component
+function Empty() {
+  return (
+    <div>
+      <em>No items in cart</em>
+    </div>
+  );
+}
