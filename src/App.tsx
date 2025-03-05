@@ -1,14 +1,15 @@
+import { useState } from "react";
 import { Empty } from "./components/Empty";
 import { Total } from "./components/Total";
 
 function App() {
-  const totalProducts = 0;
+  const [totalProducts, setTotalProducts] = useState<number>(0);
 
-  function inc(e: React.MouseEvent) {
-    console.log("inc", e.clientY);
+  function inc() {
+    setTotalProducts((s) => s + 1);
   }
 
-  console.log("render App", totalProducts);
+  console.log("render", totalProducts);
 
   return (
     <>
