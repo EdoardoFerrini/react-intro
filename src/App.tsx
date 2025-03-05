@@ -1,13 +1,13 @@
-import { useState } from "react";
-
-const initialState = [
-  { id: 1, name: "Fabio" },
-  { id: 2, name: "Lorenzo" },
-  { id: 3, name: "Silvia" },
-];
+import { useEffect, useState } from "react";
 
 function App() {
-  const [users, setUsers] = useState(initialState);
+  const [users, setUsers] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((res) => setUsers(res));
+  }, []);
 
   function addUser() {
     const newUser = { id: Date.now(), name: `user ${Math.random()}` };
@@ -17,7 +17,11 @@ function App() {
   return (
     <>
       {users.map((user) => {
-        return <li key={user.id}>{user.name}</li>;
+        return (
+          <li key={user.id}>
+            {user.id} - {user.name}
+          </li>
+        );
       })}
       <button onClick={addUser}>Add</button>
     </>
