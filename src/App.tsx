@@ -10,8 +10,15 @@ function App() {
   }, []);
 
   function addUser() {
-    const newUser = { id: Date.now(), name: `user ${Math.random()}` };
-    setUsers((s) => [...s, newUser]);
+    fetch("https://jsonplaceholder.typicode.com/users", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ name: `user ${Math.random()}` }),
+    })
+      .then((res) => res.json())
+      .then((res) => setUsers((s) => [...s, res]));
   }
 
   return (
