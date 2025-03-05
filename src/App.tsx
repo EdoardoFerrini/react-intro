@@ -1,23 +1,11 @@
 function App() {
-  return <div>Hello React</div>;
+  return (
+    <div>
+      <h1>Hello</h1>
+      <h1>Element 1</h1>
+      <h1>Element 2</h1>
+    </div>
+  );
 }
 
 export default App;
-
-/*
-
-const App = () => {
-  return <h1>Hello React</h1>;
-};
-
-export default App;
-
-*/
-
-/*
-
-const App = () => <div>Hello React</div>;
-
-export default App;
-
-*/
