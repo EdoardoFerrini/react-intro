@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { User } from "./model/user";
 
@@ -5,33 +6,25 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((res) => setUsers(res));
+    axios
+      .get<User[]>("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setUsers(res.data));
   }, []);
 
   function addUser() {
-    fetch("https://jsonplaceholder.typicode.com/users", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({ name: `user ${Math.random()}` }),
-    })
-      .then((res) => res.json())
-      .then((res) => setUsers((s) => [...s, res]));
+    axios
+      .post<User>("https://jsonplaceholder.typicode.com/users", {
+        name: `name ${Math.random()}`,
+      })
+      .then((res) => setUsers((s) => [...s, res.data]));
   }
 
   return (
     <>
       {users.map((user) => {
-        return (
-          <li key={user.id}>
-            {user.id} - {user.name}
-          </li>
-        );
+        return <li key={user.id}>{user.name}</li>;
       })}
-      <button onClick={addUser}>Add</button>
+      <button onClick={addUser}>Add User</button>
     </>
   );
 }
